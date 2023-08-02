@@ -45,6 +45,12 @@ public class WalletUseCasesImpl implements WalletUseCases {
             ));
   }
 
+  @Override
+  public Mono<Wallet> findByPhone(String phone) {
+    return walletRepository.findByPhone(phone)
+        .switchIfEmpty(Mono.error(new CustomNotFoundException("Data not found")));
+  }
+
   private Mono<WalletRequest> validateInformation(WalletRequest request) {
     if (request.getProfile() == SELLER && StringUtils.isBlank(request.getAccountNumber())) {
       return Mono.error(new CustomInformationException("The seller profile "

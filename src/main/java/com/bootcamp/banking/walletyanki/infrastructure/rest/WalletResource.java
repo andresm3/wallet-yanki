@@ -34,4 +34,9 @@ public class WalletResource {
   public Mono<Wallet> findByDocumentNumber(@PathVariable String documentNumber) {
     return walletUseCases.findByDocumentNumber(documentNumber);
   }
+
+  @GetMapping("/phone/{phone}")
+  public Mono<Wallet> findByPhone(@PathVariable String phone) {
+    return walletUseCases.findByPhone(phone);
+  }
 }

@@ -8,4 +8,6 @@ public interface WalletUseCases {
 
   Mono<Wallet> findByDocumentNumber(String documentNumber);
   Mono<Wallet> createUser(WalletRequest request);
+
+  Mono<Wallet> findByPhone(String documentNumber);
 }
